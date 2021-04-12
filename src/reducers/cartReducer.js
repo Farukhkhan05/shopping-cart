@@ -5,7 +5,7 @@ import Item4 from '../images/item4.jpg';
 import Item5 from '../images/item5.jpg';
 import Item6 from '../images/item6.jpg';
 
-import {ADD_TO_CART} from './action-types/cart-actions';
+import {ADD_TO_CART} from '../actions/action-types/cart-actions';
 
 const initialState = {
     items: [
@@ -44,6 +44,12 @@ const cartReducer = (state = initialState, action) =>{
             //calculating the total
             let newTotal = state.total + addedItem.price
             console.log("newTotal", newTotal);
+
+            return{
+                ...state,
+                addedItems: [...state.addedItems, addedItem],
+                total : newTotal
+            }
         }
     }
 }
