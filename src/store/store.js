@@ -3,7 +3,7 @@ import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger';
 
 //import reducer..
-import rootReducer from '../reducers/index';
+import rootReducer from '../reducers/cartReducer';
 
 //Middleware..
 const middleware = [thunk, logger];
