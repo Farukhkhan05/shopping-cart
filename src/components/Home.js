@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux';
-import {addToCart} from '../actions/cartAction';
+import {addToCart, getProducts} from '../actions/cartAction';
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -8,15 +8,15 @@ const Home = () => {
     //set data in an Array to check 
     const [data, setData] = useState([]);
 
-    const showdataSelector = useSelector(state => state.addedItems.data)
+    const showdataSelector = useSelector(state => state.addedItems)
     console.log("showData", showdataSelector)
 
      const handleClick = (id)=>{
-        addToCart(id); 
+        dispatch(addToCart(id)); 
     }
 
     useEffect(()=>{
-        dispatch(addToCart())
+        dispatch(getProducts())
     },[])
 
     useEffect(()=>{
@@ -32,7 +32,7 @@ const Home = () => {
             <div className="card" key={item.id}>
                 <div className="card-image">
                     <img src={item.image} alt={item.title}/>
-                    <span to="/" className="btn-floating halfway-fab waves-effect waves-light red" onClick={()=>{handleClick(item.id)}}><i className="material-icons">add</i></span>
+                    <span to="/" className="btn-floating halfway-fab waves-effect waves-light red" onClick={()=>{handleClick(item)}}><i className="material-icons">add</i></span>
                 </div>
                     <span className="card-title">{item.category}</span>
                 <div className="card-content">
