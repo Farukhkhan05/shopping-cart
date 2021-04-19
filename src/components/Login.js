@@ -52,7 +52,7 @@ const Login = () => {
   //     }
   // }
   const handleLogin = () => {
-    let arr =[{UName:"farukh@gmail.com", Pass:"12345", conPass:"12345"}]
+    let arr =[{UName:"farukh@gmail.com", Pass:"12345"}]
     if(arr[0].UName===register.UName && arr[0].Pass===register.Pass ){
       localStorage.setItem("Token", JSON.stringify(true))
       // dispatch(login_user(register))

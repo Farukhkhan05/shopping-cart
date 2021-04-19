@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {checkoutData, checkOut} from '../actions/cartAction';
+import Navbar from './Navbar';
 
 
 const Cart = () => {
@@ -120,6 +121,8 @@ const Cart = () => {
         Nothing
     </p>
     return (
+        <>
+        <Navbar/>
             <div className="cart">
                 <h5>You have ordered:</h5>
                 <ul className="collection">
@@ -130,6 +133,7 @@ const Cart = () => {
                       <Link to="/login"><button onClick={handleCheckOut} className="waves-effect waves-light btn">Checkout</button></Link> 
                 </div>
             </div>
+            </>
     )
 }
 

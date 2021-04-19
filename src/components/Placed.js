@@ -30,11 +30,11 @@ const Placed = ({ show }) => {
                     </div>
 
 
-                </div>)
+                </div>
+                )
             })
             }
         </div>
-        {/* <button className="checkout" onClick={handleCheckout}>Checkout</button> */}
     </div>)
 }
 

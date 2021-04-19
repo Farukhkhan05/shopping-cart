@@ -1,16 +1,19 @@
 import React, {useState, useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux';
 import {addToCart, getProducts} from '../actions/cartAction';
+import Navbar from './Navbar';
 
 const Home = () => {
     const dispatch = useDispatch()
 
     //set data in an Array to check 
     const [data, setData] = useState([]);
-    const [count, setCount] = useState("")
-
+    const [count, setCount] = useState(0)
+    console.log("counter", count)
     const showdataSelector = useSelector(state => state.addedItems)
     console.log("showData", showdataSelector)
+    const c = JSON.parse(localStorage.getItem('cart'))
+    console.log("cccccccccccc",c)
 
      const handleClick = (id)=>{
          setCount(count + 1)
@@ -29,6 +32,30 @@ const Home = () => {
         }
     },[showdataSelector])
 
+    const searchfunction = (e) =>{
+        let search = data.filter((i)=>{
+            return(
+                i.category.toLowerCase().includes(e.target.value)
+            )
+        })
+        if(e.target.value === ""){
+            let a = showdataSelector.map((i)=>{
+                return{
+                    quantity : 1,
+                    data: i
+                }
+            })
+            setData(a)
+        }else{
+            setData(search)
+            
+        }
+      
+
+    }
+
+    const handleQty =()=>{}
+
     let itemList = data.map(item =>{
         return(
             <div className="card" key={item.id}>
@@ -40,18 +67,22 @@ const Home = () => {
                 <div className="card-content">
                     <p>{item.description}</p>
                     <p><b>Price: ${item.price}</b></p>
+                    Quantity<input min="1" onChange={handleQty} className="cartNumber" placeholder={item.quantity} type="number" />
                 </div>
             </div>
         )
     })
     return (
+        <>
+        <Navbar cart={c?c.length:null}/>
         <div className="container">
-        {/* <input className="search" type="search" title="Search here" placeholder="Enter here to search products by Title" onChange={searchfunction} /> */}
+        <input className="search" type="search" title="Search here" placeholder="Enter here to search products by Title" onChange={searchfunction} />
             <h3 className="center">Our items</h3>
             <div className="box">
                 {itemList}
             </div>
        </div>
+       </>
     )
 }
 

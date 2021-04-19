@@ -6,6 +6,8 @@ import { login_user, logoutSes } from '../actions/cartAction';
 import {useSelector, useDispatch} from 'react-redux';
 
 const Navbar = ({ cart, searchfunction }) =>{
+    console.log("cartttttttttttt", cart)
+    let arr =[{UName:"farukh@gmail.com", Pass:"12345"}]
     const data = useSelector(state => state.login_user)
     // const data = JSON.parse(localStorage.getItem("user"))
     const token = JSON.parse(localStorage.getItem("Token"))
@@ -35,10 +37,10 @@ const Navbar = ({ cart, searchfunction }) =>{
                     {/* <input className="search" type="search" title="Search here" placeholder="Enter here to search products by Title" onChange={searchfunction} /> */}
                     {/* <label className="Name">{token ? da.UName : <button className="login" onClick={LoginHandle} style={{width:"0%"}}>Login</button>}</label> */}
                         {/* <l1>{token && user.UName}</l1> */}
-                        <li><Link to='/'>Shop</Link></li>
+                        <li><Link to='/'>{token?arr[0].UName:"Shop"}</Link></li>
                         <li><Link to='/cart'>Cart</Link></li>
                         {/* <li><Link to='/Placed'>Orders</Link></li> */}
-                        <li><Link to="/cart"><ShoppingCartIcon>shopping_cart<sup>{cart}</sup></ShoppingCartIcon></Link></li>
+                        <li><Link to="/cart"><ShoppingCartIcon>shopping_cart</ShoppingCartIcon><sup>{cart}</sup></Link></li>
                         <button className="logout" title="logout" onClick={logout} style={{width:"0%", marginRight: '-100px'}}>{<ExitToAppIcon />}</button>
                     </ul>
                 </div>
