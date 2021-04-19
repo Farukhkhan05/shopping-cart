@@ -13,11 +13,12 @@ const Home = () => {
     const showdataSelector = useSelector(state => state.addedItems)
     console.log("showData", showdataSelector)
     const c = JSON.parse(localStorage.getItem('cart'))
+    const [qty, setqty] = useState(1);
     console.log("cccccccccccc",c)
 
-     const handleClick = (id)=>{
+     const handleClick = (id, qty)=>{
          setCount(count + 1)
-        dispatch(addToCart(id)); 
+        dispatch(addToCart(id, qty)); 
     }
 
     useEffect(()=>{
@@ -54,7 +55,9 @@ const Home = () => {
 
     }
 
-    const handleQty =()=>{}
+    const handleQty =(e)=>{
+        setqty(e.target.value)
+    }
 
     let itemList = data.map(item =>{
         return(
