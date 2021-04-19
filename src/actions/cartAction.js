@@ -1,11 +1,10 @@
 import {ADD_TO_CART, GET_PRODUCT, REMOVE_TO_CART, BUY_NOW, CHECK_OUT, REGISTER_DATA, LOGIN_USER } from './action-types/cart-actions';
 import axios from 'axios';
 
-export const getProducts = (id) => dispatch => {
+export const getProducts = () => dispatch => {
     axios.get(`https://fakestoreapi.com/products`)
     .then((response)=>{
         console.log("Response", response);
-        //dispatch the add cart action
         dispatch({type : GET_PRODUCT, payload : response.data})
     })
     .catch((err)=>{
@@ -15,6 +14,7 @@ export const getProducts = (id) => dispatch => {
 
 export const addToCart = (data, qty) => dispatch =>{
     console.log("addToCartData", data);
+    //dispatch the add cart action
     dispatch({type : ADD_TO_CART, payload : data, qutantity: qty })
 }
 

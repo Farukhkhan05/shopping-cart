@@ -18,6 +18,7 @@ const Navbar = ({ cart, searchfunction }) =>{
 
     // const token=JSON.parse(localStorage.getItem("Token"))
     const user=JSON.parse(localStorage.getItem('user'))
+    console.log("userrrrrr", user)
     const LoginHandle = () => { 
         window.location.href="/login"
         // window.open("LoginPage")
@@ -28,6 +29,7 @@ const Navbar = ({ cart, searchfunction }) =>{
             <nav className='nav-wrapper'>
                 <div className='container'>
                     <Link to ='/' className='brand-logo left'>ShoppingCart</Link>
+                    
 
                     <ul className="right">
                     {/* <input className="search" type="search" title="Search here" placeholder="Enter here to search products by Title" onChange={searchfunction} /> */}
@@ -37,7 +39,7 @@ const Navbar = ({ cart, searchfunction }) =>{
                         <li><Link to='/cart'>Cart</Link></li>
                         {/* <li><Link to='/Placed'>Orders</Link></li> */}
                         <li><Link to="/cart"><ShoppingCartIcon>shopping_cart<sup>{cart}</sup></ShoppingCartIcon></Link></li>
-                        <button className="logout" title="logout" onClick={logout} style={{width:"0%"}}>{<ExitToAppIcon />}</button>
+                        <button className="logout" title="logout" onClick={logout} style={{width:"0%", marginRight: '-100px'}}>{<ExitToAppIcon />}</button>
                     </ul>
                 </div>
             </nav>

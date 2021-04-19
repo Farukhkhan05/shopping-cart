@@ -111,7 +111,7 @@ const cartReducer = (state = initialState, action) =>{
                 localStorage.setItem("Token", false)
                 return ({
                     type: LOGOUT,
-                    ...state,
+                    ...state
                 })
             }
         

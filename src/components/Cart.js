@@ -45,6 +45,7 @@ const Cart = () => {
         data.map((i) => {
             console.log(i);
             sum = sum + parseFloat(i.price)
+            console.log("ssssss",sum)
         })
         let token = JSON.parse(localStorage.getItem("Token"))
         let cart = JSON.parse(localStorage.getItem('cart'))

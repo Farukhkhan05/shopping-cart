@@ -7,11 +7,13 @@ const Home = () => {
 
     //set data in an Array to check 
     const [data, setData] = useState([]);
+    const [count, setCount] = useState("")
 
     const showdataSelector = useSelector(state => state.addedItems)
     console.log("showData", showdataSelector)
 
      const handleClick = (id)=>{
+         setCount(count + 1)
         dispatch(addToCart(id)); 
     }
 
@@ -44,6 +46,7 @@ const Home = () => {
     })
     return (
         <div className="container">
+        {/* <input className="search" type="search" title="Search here" placeholder="Enter here to search products by Title" onChange={searchfunction} /> */}
             <h3 className="center">Our items</h3>
             <div className="box">
                 {itemList}

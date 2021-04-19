@@ -56,7 +56,7 @@ const Login = () => {
     if(arr[0].UName===register.UName && arr[0].Pass===register.Pass ){
       localStorage.setItem("Token", JSON.stringify(true))
       // dispatch(login_user(register))
-      window.location.href="/"
+      window.location.href="/cart"
     }else(alert("you enter wrong username and password"))
       
   }
