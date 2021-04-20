@@ -84,6 +84,7 @@ const Cart = () => {
     console.log("ADAD",data)
 
     const [id, setId] = useState();
+    const [incre, setincre] = useState(data)
     console.log("cartdata ", cartdata);
     let sum=0;
     local&&local.map((i)=>{
@@ -95,6 +96,7 @@ const Cart = () => {
     let addedItems = data ?
     (
     data.map((i,j)=>{
+        console.log(i,"iiiiiiiiiiiii")
         return(
             <li className="collection-item avatar" key={i.id}>
                 <div className="item-img">
@@ -105,7 +107,10 @@ const Cart = () => {
                 <p>{i.desc}</p>
                 <p><b>Price: {i.price}$</b></p>
                 <p>
-                    <b>Quantity: {i.quantity}</b> <input type="number" min="1"  placeholder="1"/>
+                    <b>Quantity: {i.quantity}</b> <input type="number" min="1"  placeholder="1" onChange={(e)=>{
+                        incre[j].quantity = e.target.value
+                        setId([j].quantity = e.target.value)
+                    }} placeholder={i.quantity} value={i.quantity}/>
                 </p>
                 <div className="add-remove">
                 <button onClick={() => { handleBuyNow(j) }} className="Buynow">Buy Now</button>

@@ -16,7 +16,7 @@ const Home = () => {
     const [qty, setqty] = useState(1);
     console.log("cccccccccccc",c)
 
-     const handleClick = (id, qty)=>{
+     const handleClick = (id)=>{
          setCount(count + 1)
         dispatch(addToCart(id, qty)); 
     }
